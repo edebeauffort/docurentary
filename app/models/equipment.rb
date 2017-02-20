@@ -3,5 +3,4 @@ class Equipment < ApplicationRecord
   validates :category presence: true,
   validates :brand presence: true,
   validates :model presence: true,
-
 end
