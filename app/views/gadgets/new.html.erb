@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Add a gadget</h1>
+      <%= simple_form_for(@gadget) do |f| %>
+        <%= f.input :category %>
+        <%= f.input :brand %>
+        <%= f.input :model %>
+        <%= f.input :price %>
+        <%= f.input :description %>
+        <%= f.input :location %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to "Home", root_path %>
+    </div>
+  </div>
+</div>
