@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'gadgets/index'
 
-  get 'gadgets/show'
+  resources :gadgets, only:[:show, :new, :create, :edit, :update, :destroy]
 
   devise_for :users
   root to: 'pages#home'
