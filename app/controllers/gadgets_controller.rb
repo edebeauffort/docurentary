@@ -7,9 +7,11 @@ class GadgetsController < ApplicationController
   end
 
   def show                                   # used for accessing the details of specific gadget.
-    @gadget = Gadget.new
   end
 
+  def new                                   # used for accessing the details of specific gadget.
+    @gadget = Gadget.new
+  end
 
     private
     # Use callbacks to share common setup or constraints between actions.
