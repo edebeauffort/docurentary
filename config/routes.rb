@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'equipments/index'
+  get 'gadgets/index'
 
-  get 'equipments/show'
+  get 'gadgets/show'
 
   devise_for :users
   root to: 'pages#home'
