@@ -1,8 +1,7 @@
 class Equipment < ApplicationRecord
   belongs_to :user
-  geocoded_by :location
   validates :category, :brand, :model, :price, :description, :location, presence: true
-  after_validation :geocode, :if => :location_changed?
+  # add geocoding validation (wednesday lecture)
 end
 
 
@@ -23,8 +22,8 @@ end
   #end
 
 
-  #class Company < ActiveRecord::Base
-   # geocoded_by :address
-    #validates :address, presence: true
-    #after_validation :geocode, :if => :address_changed?
+  #class Equipment < ActiveRecord::Base
+   # geocoded_by :location
+    #validates :location, presence: true
+    #after_validation :geocode, :if => :location_changed?
   #end
