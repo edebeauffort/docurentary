@@ -1,12 +1,11 @@
 class CreateEquipment < ActiveRecord::Migration[5.0]
   def change
-    create_table :equipment do |t|
+    create_table :equipments do |t|
       t.string :category
       t.string :brand
       t.string :model
       t.integer :price
       t.text :description
-      t.text :accessories
       t.string :location
       t.references :user, foreign_key: true
 
