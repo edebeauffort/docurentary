@@ -13,6 +13,16 @@ class GadgetsController < ApplicationController
     @gadget = Gadget.new
   end
 
+  def create
+    @gadget = Gadget.new(gadget_params)
+    @gadget.user = current_user
+    if @gadget.save
+      redirect_to root_path #change later
+    else
+      render 'gadgets/new'
+    end
+  end
+
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_gadget
