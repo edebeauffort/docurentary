@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :gadgets, only:[:show, :new, :create, :edit, :update, :destroy]
+  resources :gadgets, only:[:index, :show, :new, :create, :edit, :update, :destroy]
+
+  get '/search_results', to: 'gadgets#search_results'
 
   devise_for :users
   root to: 'pages#home'
