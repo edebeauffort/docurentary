@@ -1,22 +1,29 @@
 
-<div class="banner">
-  <div class="banner-content text-center">
-    <div class="container">
-      <h1>Docurentary</h1>
-      <p>Rent creative tech equipment and capture your story through your eyes</p>
-      <div class="row">
-        <div class="col-xs-12">
+<div class="wrapper">
+  <div class="col-xs-12">
+  <div class="banner background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'background.jpg'%>);">
+      <div class="container">
+        <h1>Docurentary</h1>
+        <p>Rent creative tech equipment and capture your story through your eyes</p>
+        <div class="row">
+
          <form action="/gadgets">
           <div class="form-search form-inline">
+
             <select class="form-control" name="category" placeholder="Category">
+
               <option value=" " disabled selected> Type of equipment:</option>
               <option>camera</option>
               <option>drone</option>
               <option>projector</option>
               <option></option>
-            <input type="text" placeholder="City" class="form-control" name="location">
-            <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
+
+              <input type="text" placeholder="City" class="form-control" name="location">
+
+              <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
+
             </select>
+
           </div>
         </form>
       </div>
@@ -24,6 +31,53 @@
   </div>
 </div>
 </div>
+
+
+<div class="banner">
+  <div class="container-fluid">
+    <div class="row">
+      <% @gadgets.each do |gadget| %>
+      <div class="col-xs-12 col-md-4">
+
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= image_path 'imgres.jpg' %>);">
+
+
+
+          <div class="card-category">
+
+            <h5><%= gadget.category %></h5>
+
+          </div>
+
+
+
+
+          <div class="card-description">
+            <h2>
+              <%= gadget.brand %>
+              <%= gadget.model %>
+            </h2>
+            <p><%= "$#{gadget.price} per day" %></p>
+          </div>
+
+
+
+
+          <img class="card-user avatar" src="user.jpg">
+          <%= link_to "", gadget_path(gadget) %>
+
+
+
+        </div>
+      </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
 
 
 

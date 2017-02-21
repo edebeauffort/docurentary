@@ -3,3 +3,14 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+.background {
+  display: flex;
+  height: 100vh;
+  background-image: cover;
+  background-size: cover;
+  background-color: black;
+  text-align: center;
+  align-items: justify;
+  color: white;
+}
+
