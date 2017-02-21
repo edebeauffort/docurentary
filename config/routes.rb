@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Attachinary::Engine => "/attachinary"
   resources :gadgets
   get '/search_results', to: 'gadgets#search_results'
