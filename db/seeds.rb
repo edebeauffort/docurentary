@@ -11,4 +11,5 @@ Gadget.destroy_all
 Gadget.create!(user: u,category: "camera", brand: "gopro", model: "hero 5", price: 20, description:"very good camera, brand new!", location: "Brussels")
 Gadget.create!(user: u, category: "projector", brand: "sony", model: "XYZ", price: 50, description:"basic version of 2009", location: "London")
 Gadget.create!(user: u, category: "drone", brand: "DJI", model: "Phantom", price: 100, description:"latest model!", location: "Paris")
-
+Gadget.create!(user: u,category: "camera", brand: "Nikon", model: "D5", price: 20, description:"impressive features!", location: "Brussels")
+Gadget.create!(user: u,category: "camera", brand: "Hasselblad", model: "H6D-50c", price: 500, description:"medium format, amazing digital quality!", location: "Brussels")

@@ -4,7 +4,7 @@ class Gadget < ApplicationRecord
   # add geocoding validation (wednesday lecture)
 
 def self.search_results(gadget_category, gadget_location)
-  where("category ILIKE ? AND location ILIKE ?", "%#{gadget_category}%" , "%#{gadget_location}%")
+  Gadget.where("category ILIKE ? AND location ILIKE ?", "%#{gadget_category}%" , "%#{gadget_location}%")
 end
 
 end
