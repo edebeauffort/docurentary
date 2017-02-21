@@ -6,9 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
-u = User.create!(email: 'thomas@gmail.com', password:'000000')
 Gadget.destroy_all
-Gadget.create!(user: u,category: "camera", brand: "gopro", model: "hero 5", price: 20, description:"very good camera, brand new!", location: "Brussels")
-Gadget.create!(user: u, category: "projector", brand: "sony", model: "XYZ", price: 50, description:"basic version of 2009", location: "London")
-Gadget.create!(user: u, category: "drone", brand: "DJI", model: "Phantom", price: 100, description:"latest model!", location: "Paris")
+require 'faker'
+30.times do
+
+u = User.create!(email: Faker::Internet.email, password:Faker::Number.number(6))
+
+Gadget.create!(user: u,category: ["camera", "projector", "drone"].sample, brand: ["gopro","nikon","kyocera", "sony", "sonic", "samsung", "djji"].sample, model: Faker::Commerce.product_name, price: Faker::Number.number(2), description: Faker::Lorem.sentence, location: Faker::Address.city)
+end
+
 
