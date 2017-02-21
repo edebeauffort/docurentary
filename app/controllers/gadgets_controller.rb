@@ -3,7 +3,7 @@ class GadgetsController < ApplicationController
   before_action :set_gadget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @filtered_gadgets = Gadget.search_results(params[:category],params[:location])
+    @filtered_gadgets = Gadget.search_results(params[:category], params[:location])
   end
 
   # def search_results

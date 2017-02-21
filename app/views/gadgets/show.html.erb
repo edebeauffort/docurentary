@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="row">
     <div class=" col-xs-12 col-lg-12">
-      <div class="banner" style="background-image: url('<%= cl_image_path @gadget.photos.first.path, height: 100, crop: :fill %>')">
+      <div class="banner" style="background-image: url('<%= cl_image_path @gadget.photos.first.path, height: 1000, crop: :fill %>')">
         <div class="banner-content">
         </div>
       </div>
@@ -9,39 +9,38 @@
   </div>
 </div>
 <div class = "card-gadget">
-  <h2> Description</h2>
   <div class ="container">
     <div class="row">
       <div class=" col-xs-12 col-md-6">
-      <h2><%=@gadget.brand%> | <%=@gadget.model%></h2>
-      <div class = "description">
-        <div class ="item">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
-          <h3> Features </h3>
-          <table class = "table">
-            <tr>
-              <td>category</td>
-              <td class="text-right"><%=@gadget.category%></td>
-            </tr>
-            <tr>
-              <td>brand</td>
-              <td class="text-right"><%=@gadget.brand%></td>
-            </tr>
-            <tr>
-              <td>model</td>
-              <td class="text-right"><%=@gadget.model%></td>
-            </tr>
-            <tr>
-              <td>description</td>
-              <td class="text-right"><%=@gadget.description%></td>
-            </tr>
-          </table>
+        <h2><%=@gadget.brand%> | <%=@gadget.model%></h2>
+        <div class = "description">
+          <div class ="item">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
+            <h3> Features </h3>
+            <table class = "table">
+              <tr>
+                <td>category</td>
+                <td class="text-right"><%=@gadget.category%></td>
+              </tr>
+              <tr>
+                <td>brand</td>
+                <td class="text-right"><%=@gadget.brand%></td>
+              </tr>
+              <tr>
+                <td>model</td>
+                <td class="text-right"><%=@gadget.model%></td>
+              </tr>
+              <tr>
+                <td>description</td>
+                <td class="text-right"><%=@gadget.description%></td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
-    <div class=" col-xs-12 col-md-6">
-      <div class = "item booking">
-        <table class = "table price">
+      <div class=" col-xs-12 col-md-6">
+        <div class = "item booking">
+          <table class = "table price">
            <tr>
             <td><%=@gadget.price%> €</td>
             <td class ="text-right"> per day</td>
@@ -62,9 +61,8 @@
         </tr>
       </table>
     </div>
+    <%= link_to "Request booking", class: "btn btn-primary" %>
   </div>
-
-
 </div>
 </div>
 
