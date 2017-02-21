@@ -16,6 +16,17 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+gem 'omniauth-facebook'
+gem 'faker'
+
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

@@ -2,11 +2,16 @@ class GadgetsController < ApplicationController
 
   before_action :set_gadget, only: [:show, :edit, :update, :destroy]
 
-  def index                                  # used for listing all gadgets on the home page.
+  def index
     @gadgets = Gadget.all
   end
 
-  def show                                   # used for accessing the details of specific gadget.
+  def search_results
+    @filtered_gadgets = Gadget.search_results(params[:category],params[:location])
+  end
+
+
+  def show                                  # used for accessing the details of specific gadget.
   end
 
   def new                                   # used for accessing the details of specific gadget.
@@ -17,7 +22,7 @@ class GadgetsController < ApplicationController
     @gadget = Gadget.new(gadget_params)
     @gadget.user = current_user
     if @gadget.save
-      redirect_to root_path #change later
+      redirect_to gadget_path(@gadget) #change later
     else
       render 'gadgets/new'
     end
@@ -31,7 +36,7 @@ class GadgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gadget_params
-      params.require(:gadget).permit(:category, :brand, :model, :price, :description, :location)
+      params.require(:gadget).permit(:category, :brand, :model, :price, :description, :location, photos: [])
     end
 
 

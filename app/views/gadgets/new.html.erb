@@ -13,6 +13,7 @@
                     <%= f.input :price, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Price per day." %>
                     <%= f.input :location, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Enter an address..." %>
                     <%= f.input :description, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Enter a descrription..." %>
+                    <%= f.input :photos, as: :attachinary %>
                     <%= f.button :submit, class: 'btn btn-primary bold-text' %>
                   <% end %>
                 </div>
@@ -20,7 +21,7 @@
             </div>
           </div>
         </div>
-  </div>
+     </div>
 </div>
 
 

@@ -1,4 +1,4 @@
-.container{
+.log-in{
     border: #DCDDDD 2px solid;
     width: 500px;
     padding-right: 40px;
@@ -7,5 +7,27 @@
     padding-bottom: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
-
+    background-color: rgba(55, 55, 55, 0.5);
  }
+.facebook{
+  text-align: center;
+  border-radius: 8px;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.banner-log-in{
+
+
+}
+.banner-log-in {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
