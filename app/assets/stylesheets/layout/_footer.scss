@@ -1,1 +1,33 @@
 // Your footer style
+#footer {
+    background: #333333;
+    padding: 35px 0 25px 0;
+    color: #CCCCCC;
+    h1 {
+      font-size: 18px;
+    }
+        h2 {
+      font-size: 14px;
+    }
+    p{
+      font-size: 12px;
+    }
+}
+
+#footer p {
+    margin-top: 5px;
+}
+
+
+#footer a {
+    color: #CCCCCC;
+}
+
+#footer a:hover {
+    color: #4B4126;
+}
+
+#line-bar {
+  border-top: 2px solid #CCCCCC;
+  padding-top: 5px;
+}

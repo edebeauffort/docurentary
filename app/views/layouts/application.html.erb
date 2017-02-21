@@ -19,6 +19,7 @@
 
 
     <%= render 'shared/flashes' %>
+
     <%= yield %>
     <!-- Javascripts -->
     <%# javascript_include_tag "https://code.jquery.com/ui/1.12.1/jquery-ui.js" %>
@@ -26,5 +27,8 @@
     <%= cloudinary_js_config %>
 
     <%= yield(:after_js) %>
+
+    <%= render 'shared/footer' %>
+
   </body>
 </html>
