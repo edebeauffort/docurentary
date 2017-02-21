@@ -2,11 +2,16 @@ class GadgetsController < ApplicationController
 
   before_action :set_gadget, only: [:show, :edit, :update, :destroy]
 
-  def index                                  # used for listing all gadgets on the home page.
+  def index
     @gadgets = Gadget.all
   end
 
-  def show                                   # used for accessing the details of specific gadget.
+  def search_results
+    @filtered_gadgets = Gadget.search_results(params[:category],params[:location])
+  end
+
+
+  def show                                  # used for accessing the details of specific gadget.
   end
 
   def new                                   # used for accessing the details of specific gadget.

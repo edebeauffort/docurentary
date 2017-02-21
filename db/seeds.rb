@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+u = User.create!(email: 'thomas@gmail.com', password:'000000')
+Gadget.destroy_all
+Gadget.create!(user: u,category: "camera", brand: "gopro", model: "hero 5", price: 20, description:"very good camera, brand new!", location: "Brussels")
+Gadget.create!(user: u, category: "projector", brand: "sony", model: "XYZ", price: 50, description:"basic version of 2009", location: "London")
+Gadget.create!(user: u, category: "drone", brand: "DJI", model: "Phantom", price: 100, description:"latest model!", location: "Paris")
+
