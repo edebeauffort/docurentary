@@ -1,37 +1,30 @@
 <div class="navbar-wagon">
   <!-- Logo -->
+  <div class="airbnblogo">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo.png" %>
-  <% end %>
+ <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+  <% end %></div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+  <%= link_to t(".renter", default: "Become a renter"), new_gadget_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
     <!-- Different navigation if login or not -->
+
     <% if user_signed_in? %>
 
     <!-- Notification -->
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-    <div class="badge-container">
-      <i class="fa fa-envelope-o"></i>
-      <div class="badge badge-blue">3</div>
-    </div>
-    <% end %>
+<%= link_to t(".renter", default: "Your bookings"), gadgets_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
 
         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%= image_tag avatar_url, class: "avatar-user dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -41,7 +34,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "#" do %>
+            <%= link_to root_path do %>
             <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
             <% end %>
           </li>
@@ -56,15 +49,17 @@
 
     <% else %>
 
-    <!-- Login text link -->
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <% end %>
+    <!-- Login text link -->
+    <%= link_to t(".sign_up", default: "Sign up"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
+
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button-login btn" %>
 
+<% end %>
+</div>
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
