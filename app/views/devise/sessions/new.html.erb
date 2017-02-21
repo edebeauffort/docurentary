@@ -1,5 +1,7 @@
-<div class="container">
-  <div class="row">
+<div class="banner-log-in" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'imgres.jpg' %> );">
+
+  <div class="container log-in">
+    <div class="row">
 
       <h1>Log in</h1>
 
@@ -11,11 +13,12 @@
       </div>
 
       <div class="form-actions">
-      <%= f.button :submit, "Log in", {class: "btn btn-primary"} %>
+        <%= f.button :submit, "Log in", {class: "btn btn-primary"} %>
       </div>
       <% end %>
-  <div class="password-forget">
-      <%= render "devise/shared/links" %>
-</div>
+      <div class="password-forget">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
 </div>
