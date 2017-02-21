@@ -1,25 +1,113 @@
-<div class="container">
+<div class="wrapper">
   <div class="row">
-    <div class="col-md-offset-3 col-md-6">
+    <div class=" col-xs-12 col-lg-12">
 
-      <h1>
-        <%= @gadget.model %>
-      </h1>
 
-      <div class = "card gadget">
-        <h2> Description</h2>
-
-        <%= @gadget.category %>
-        <%= @gadget.brand %>
-        <%= @gadget.model %>
-        <%= @gadget.price %>
-        <%= @gadget.description %>
-
-        <%= link_to 'Back', gadgets_path %> |
+      <div class="banner" style="background-image: url('<%= cl_image_path @gadget.photos.first.path, height: 100, crop: :fill %>')">
+        <div class="banner-content">
+          <p><%=@gadget.brand%> | <%=@gadget.model%></p>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
 
 
+
+<div class ="container">
+  <div class="row">
+    <div class=" col-xs-12 col-md-6">
+
+      <div class = "description">
+        <div class ="item">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
+          <table class = "table">
+            <tr>
+              <td>category</td>
+              <td class="text-right"><%=@gadget.category%></td>
+            </tr>
+            <tr>
+              <td>brand</td>
+              <td class="text-right"><%=@gadget.brand%></td>
+            </tr>
+            <tr>
+              <td>model</td>
+              <td class="text-right"><%=@gadget.model%></td>
+            </tr>
+            <tr>
+              <td>description</td>
+              <td class="text-right"><%=@gadget.description%></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+      <div class=" col-xs-12 col-md-6">
+      <div class = "item booking">
+        <table class = "table price">
+         <tr>
+          <td><%=@gadget.price%> €</td>
+          <td class ="text-right"> per day</td>
+        </tr>
+      </table>
+      <table class = "table date">
+       <tr>
+        <th>from </th>
+        <th>to </th>
+      </tr>
+      <tr>
+        <td><input type="date"></td>
+        <td><input type="date"></td>
+      </tr>
+      <tr>
+        <td>total price</td>
+        <td class ="text-right"><%=@gadget.price%>€</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+<!-- <table border="1">
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
+</table> -->
+
+
+<!-- <div class="tabs">
+  <a class="tab active" href="#">
+    <h3>350</h3>
+    <p>Followers</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>456</h3>
+    <p>Following</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>189</h3>
+    <p>Upvoted</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>13</h3>
+    <p>Submitted</p>
+  </a>
+</div> -->
