@@ -22,7 +22,7 @@ class GadgetsController < ApplicationController
     @gadget = Gadget.new(gadget_params)
     @gadget.user = current_user
     if @gadget.save
-      redirect_to root_path #change later
+      redirect_to gadget_path(@gadget) #change later
     else
       render 'gadgets/new'
     end
@@ -36,7 +36,7 @@ class GadgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gadget_params
-      params.require(:gadget).permit(:category, :brand, :model, :price, :description, :location)
+      params.require(:gadget).permit(:category, :brand, :model, :price, :description, :location, photos: [])
     end
 
 
