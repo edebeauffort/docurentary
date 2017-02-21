@@ -3,12 +3,12 @@ class GadgetsController < ApplicationController
   before_action :set_gadget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @gadgets = Gadget.all
+    @filtered_gadgets = Gadget.search_results(params[:category], params[:location])
   end
 
-  def search_results
-    @filtered_gadgets = Gadget.search_results(params[:category],params[:location])
-  end
+  # def search_results
+  #   @filtered_gadgets = Gadget.search_results(params[:category],params[:location])
+  # end
 
 
   def show                                  # used for accessing the details of specific gadget.

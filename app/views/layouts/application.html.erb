@@ -12,14 +12,10 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <!-- Navbar -->
     <%= render 'shared/navbar' %>
-
-    <!-- Notices and Alerts -->
-
-    <!-- Main Page -->
-
-
     <%= render 'shared/flashes' %>
+
     <%= yield %>
+
     <!-- Javascripts -->
     <%# javascript_include_tag "https://code.jquery.com/ui/1.12.1/jquery-ui.js" %>
     <%= javascript_include_tag 'application' %>

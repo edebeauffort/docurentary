@@ -4,7 +4,7 @@ class Gadget < ApplicationRecord
   # add geocoding validation (wednesday lecture)
   has_attachments :photos, maximum: 2
 
-  def self.search_results(gadget_category, gadget_location)
-    where("category ILIKE ? AND location ILIKE ?", "%#{gadget_category}%" , "%#{gadget_location}%")
-  end
+def self.search_results(gadget_category, gadget_location)
+  Gadget.where("category ILIKE ? AND location ILIKE ?", "%#{gadget_category}%" , "%#{gadget_location}%")
+end
 end

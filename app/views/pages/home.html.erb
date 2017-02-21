@@ -1,29 +1,59 @@
-
-<div class="banner">
-  <div class="banner-content text-center">
-    <div class="container">
-      <h1>Docurentary</h1>
-      <p>Rent creative tech equipment and capture your story through your eyes</p>
-      <div class="row">
-        <div class="col-xs-12">
-         <form action="/search_results" method="/get">
-          <div class="form-search form-inline">
-            <select class="form-control" name="category" placeholder="Category">
-              <option value=" " disabled selected> Type of equipment:</option>
-              <option>camera</option>
-              <option>drone</option>
-              <option>projector</option>
-              <option></option>
-            <input type="text" placeholder="City" class="form-control" name="location">
-            <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
-            </select>
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="banner background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'background.jpg'%>);">
+        <div class="container">
+          <h1>Docurentary</h1>
+          <p>Rent creative tech equipment and capture your story through your eyes</p>
+          <div class="row">
+            <form action="/gadgets" class="form-inline">
+              <select class="form-control" name="category" placeholder="Category">
+                <option value=" " disabled selected> Type of equipment:</option>
+                <option>camera</option>
+                <option>drone</option>
+                <option>projector</option>
+              </select>
+              <input type="text" placeholder="City" class="form-control" name="location">
+              <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="gadget-index">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Gadgets</h2>
+      </div>
+      <% @gadgets.each do |gadget| %>
+      <div class="col-xs-12 col-md-4">
+        <%= link_to gadget_path(gadget) do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path gadget.photos.first.path, height: 1000, crop: :fill %>');">
+          <img class="card-user avatar" src="user.jpg">
+            <div class="card-description">
+            <h5><%= gadget.category %></h5>
+            <h2>
+              <%= gadget.brand %>
+              <%= gadget.model %>
+              <p id="summary"><%= gadget.description %></p>
+            </h2>
+
+            <p><%= "$#{gadget.price} per day" %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
 
 
 

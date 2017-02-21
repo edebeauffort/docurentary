@@ -1,16 +1,49 @@
-  <div class="container">
-    <div class="row">
-      <% @gadgets.each do |gadget| %>
-      <div class="col-xs-12 col-sm-6 text-center">
-        <div class="grey-card hvr-grow-rotate" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-        url(''), height: 300, width: 600, crop: :fill %>')">
-        <div class="grey-card-content">
-          <h3><%= gadget.model %></h3>
-          <p>------------------</p>
+<div class="container">
+  <div class="row">
+    <% if @filtered_gadgets.blank? %>
+
+    <div class="col-xs-12">
+      <p>We got nothing for you, sorry!</p>
+    </div>
+
+    <% else %>
+
+    <% @filtered_gadgets.each do |gadget| %>
+    <div class="col-xs-12 col-md-4 text-center">
+      <%= link_to gadget_path(gadget) do %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= image_path 'imgres.jpg' %>);">
+        <div class="card-category">
+          <h5><%= gadget.category %></h5>
         </div>
-        <%= link_to "", gadget, class: "card-link" %>
+        <div class="card-description">
+          <h2><%= gadget.brand %> - <%= gadget.model %></h2>
+          <p><%= "$#{gadget.price} per day" %></p>
+        </div>
+        <img class="card-user avatar" src="user.jpg">
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+
+
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <label>When Do You Need It?</label>
+            <form action="/search_results" method="/get">
+              <div class="form-search form-inline">
+                <input value="<%= params[:start_date] %>" type="date" placeholder="date" class="form-control" name="date">
+                <input value="<%= params[:end_date] %>" type="date" placeholder="date" class="form-control" name="date">
+                <input type="submit" value="Check Avalability" class="navbar-wagon-item navbar-wagon-button btn">
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <% end %>
   </div>
+</div>
 

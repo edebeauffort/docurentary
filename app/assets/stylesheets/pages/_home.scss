@@ -3,3 +3,35 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+.background {
+  display: flex;
+  height: 100vh;
+  background-image: cover;
+  background-size: cover;
+  background-color: black;
+  text-align: center;
+  align-items: justify;
+  color: white;
+}
+
+.gadget-index {
+  margin-top: 30px;
+}
+
+.card {
+  margin: 10px 0px;
+  box-shadow: 3px 3px 3px #888888;
+  border-radius: 4px;
+}
+
+.card #summary {
+  visibility:hidden;
+}
+
+.card:hover {
+  visibility:hidden;
+}
+
+.card:hover #summary{
+  visibility:visible;
+}
