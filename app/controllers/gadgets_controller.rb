@@ -16,15 +16,17 @@ class GadgetsController < ApplicationController
 
   def new                                   # used for accessing the details of specific gadget.
     @gadget = Gadget.new
+
   end
 
   def create
     @gadget = Gadget.new(gadget_params)
     @gadget.user = current_user
+
     if @gadget.save
-      redirect_to gadget_path(@gadget) #change later
+      redirect_to gadget_path(@gadget)
     else
-      render 'gadgets/new'
+      render :new
     end
   end
 
