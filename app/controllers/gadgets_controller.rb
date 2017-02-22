@@ -19,7 +19,9 @@ class GadgetsController < ApplicationController
   # end
 
 
-  def show                                  # used for accessing the details of specific gadget.
+  def show
+    @booking = Booking.new
+                                     # used for accessing the details of specific gadget.
   end
 
   def new                                   # used for accessing the details of specific gadget.

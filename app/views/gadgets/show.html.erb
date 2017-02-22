@@ -38,13 +38,10 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
 
-        <div class = "item booking">
-=======
+
       <div class=" col-xs-12 col-md-6">
         <div class = "item-booking">
->>>>>>> ecfa50ffb1190ce690e95f5e2de6f278d4f1cc2c
           <table class = "table price">
            <tr>
             <td><%=@gadget.price%> €</td>
@@ -53,67 +50,192 @@
         </table>
         <table class = "table date">
           <tr>
-            <th class="text-center">from </th>
-            <th class="text-center">to </th>
+            <td class="text-center">from </td>
+            <td class="text-center">to </td>
           </tr>
           <tr>
-            <td><div class='input-group' id='datetimepicker'>
-              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
+              <input type='date' name='booking[start_date]' class="form-control datetimepicker" placeholder="start">
+              <label class="input-group-addon btn" for="booking[start_date]">
+                <span class="fa fa-calendar open-datetimepicker"></span>
+              </label>
             </td>
-            <td><div class='input-group' id='datetimepicker'>
-              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            <td>
+              <input type='date' name='booking[end_date]' class="form-control datetimepicker" placeholder="end">
+              <label class="input-group-addon btn" for="booking[end_date]">
+                <span class="fa fa-calendar open-datetimepicker"></span>
+              </label>
             </td>
           </tr>
-          <tr>
+        </table>
+        <table class = "table">
+           <tr>
             <td>total price</td>
             <td class ="text-right"><%=@gadget.price%>€</td>
           </tr>
         </table>
-        <%= link_to "request booking", new_gadget_booking_path(@gadget), class: "btn btn-primary btn-large btn-block" %>
+        <%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
+        <% end %>
+
+        </div>
       </div>
     </div>
-<<<<<<< HEAD
     <%= link_to "Request booking", class: "btn btn-primary" %>
-
-=======
->>>>>>> ecfa50ffb1190ce690e95f5e2de6f278d4f1cc2c
   </div>
-
-
-
 </div>
 
-<!-- <table border="1">
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$80</td>
-  </tr>
-</table> -->
 
+<div class = "container">
+  <div class = "col-xs-12 col col-lg-12">
+      <div id="map" style="width: 100%; height: 400px;"></div>
 
-<!-- <div class="tabs">
-  <a class="tab active" href="#">
-    <h3>350</h3>
-    <p>Followers</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>456</h3>
-    <p>Following</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>189</h3>
-    <p>Upvoted</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>13</h3>
-    <p>Submitted</p>
-  </a>
-</div> -->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+      <script type="text/javascript">
+        var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
+
+        var myOptions = {
+          zoom: 16,
+          center: myLatlng,
+          scrollwheel: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#004358"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#fd7400"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            },
+            {
+                "lightness": -20
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            },
+            {
+                "lightness": -17
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "visibility": "on"
+            },
+            {
+                "weight": 0.9
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            },
+            {
+                "lightness": -10
+            }
+        ]
+    },
+    {},
+    {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1f8a70"
+            },
+            {
+                "weight": 0.7
+            }
+        ]
+    }
+] // TODO: replace [] by array from https://snazzymaps.com/
+  };
+
+  var map = new google.maps.Map(document.getElementById('map'), myOptions);
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title: "You are here!"
+  });
+</script>
+  </div>
+</div>
