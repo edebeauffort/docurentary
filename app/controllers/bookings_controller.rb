@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
   @booking = Booking.new(booking_params)
   @booking.gadget = @gadget
   @booking.save
-
+  redirect_to new_gadget_booking_path
   end
 
   private
