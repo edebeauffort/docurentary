@@ -16,7 +16,6 @@ class GadgetsController < ApplicationController
 
   def new                                   # used for accessing the details of specific gadget.
     @gadget = Gadget.new
-
   end
 
   def create
