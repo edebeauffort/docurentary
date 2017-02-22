@@ -15,19 +15,33 @@
 }
 
 #footer p {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 
-#footer a {
-    color: #CCCCCC;
+#footer .fa {
+  color: #CCCCCC;
 }
 
-#footer a:hover {
-    color: #4B4126;
+#footer .fa:hover {
+  color: #4B4126;
 }
 
 #line-bar {
   border-top: 2px solid #CCCCCC;
   padding-top: 5px;
+}
+
+#legal-info {
+  margin-top: 25px;
+}
+
+#footer-btn {
+  font-style: italic;
+  color: #4B4126;
+}
+
+#footer-email {
+  font-style: italic;
+  color: #4B4126;
 }
