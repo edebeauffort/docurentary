@@ -118,6 +118,8 @@
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
+  width: 30;
+  height: 30;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
@@ -146,4 +148,7 @@
 .avatar-user{
   height: 40px;
   border-radius: 100%;
+}
+.home-icon{
+  color:#FF5A5F;
 }
