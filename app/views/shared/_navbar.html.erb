@@ -2,7 +2,7 @@
   <!-- Logo -->
   <div class="airbnblogo">
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+    <i class="fa fa-home home-icon fa-3x" aria-hidden="true"></i>
     <% end %>
   </div>
 
@@ -21,14 +21,20 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-
+        <% if current_user.facebook_picture_url %>
         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag avatar_url, class: "avatar-user dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+         <% else %>
+
+        <% avatar_photo = current_user.photo.path %>
+
+        <%= cl_image_tag avatar_photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%  end%>
 
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "#" do %>
+            <%= link_to user_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
