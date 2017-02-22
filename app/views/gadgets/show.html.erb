@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class=" col-xs-12 col-md-6">
-        <div class = "item booking">
+        <div class = "item-booking">
           <table class = "table price">
            <tr>
             <td><%=@gadget.price%> €</td>
@@ -47,27 +47,28 @@
           </tr>
         </table>
         <table class = "table date">
-         <tr>
-          <th>from </th>
-          <th>to </th>
-        </tr>
-        <tr>
-          <td><input type="date"></td>
-          <td><input type="date"></td>
-        </tr>
-        <tr>
-          <td>total price</td>
-          <td class ="text-right"><%=@gadget.price%>€</td>
-        </tr>
-      </table>
+          <tr>
+            <th class="text-center">from </th>
+            <th class="text-center">to </th>
+          </tr>
+          <tr>
+            <td><div class='input-group' id='datetimepicker'>
+              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            </td>
+            <td><div class='input-group' id='datetimepicker'>
+              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            </td>
+          </tr>
+          <tr>
+            <td>total price</td>
+            <td class ="text-right"><%=@gadget.price%>€</td>
+          </tr>
+        </table>
+        <%= link_to "request booking", new_gadget_booking_path(@gadget), class: "btn btn-primary btn-large btn-block" %>
+      </div>
     </div>
-    <%= link_to "Request booking", class: "btn btn-primary" %>
   </div>
 </div>
-</div>
-
-
-
 
 <!-- <table border="1">
   <tr>
