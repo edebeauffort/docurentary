@@ -81,8 +81,11 @@
       </div>
     </div>
     <%= link_to "Request booking", class: "btn btn-primary" %>
+       <button class="btnr">
+         <%= link_to "add review", new_gadget_review_path(@gadget)%></button>
   </div>
 </div>
+
 
 
 <div class = "container">
@@ -239,3 +242,39 @@
 </script>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+       <% def hey %>
+        <% durchschnitt = 0 %>
+        <% i = 0 %>
+        <% ratings = 0 %>
+        <% @gadget.reviews.each do |review| %>
+        <div class="review-box">
+        <ul>
+        <h6> <%= review.context  %></h6>
+        <h6><%=   review.rating  %> </h6>
+
+
+
+        </ul>
+</div>
+
+        <% i += 1 %>
+        <%  durchschnitt = (ratings += review.rating)/ i %>
+
+
+
+
+        <% end %>
+
+        <h4> the average rating is
+         <%= durchschnitt %>
+
+        <% end %>
+         <%= hey %>
+    </div>
+  </div>
+</div>
+
+
