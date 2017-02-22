@@ -38,6 +38,8 @@
           </div>
         </div>
       </div>
+
+
       <div class=" col-xs-12 col-md-6">
         <div class = "item-booking">
           <table class = "table price">
@@ -48,59 +50,39 @@
         </table>
         <table class = "table date">
           <tr>
-            <th class="text-center">from </th>
-            <th class="text-center">to </th>
+            <td class="text-center">from </td>
+            <td class="text-center">to </td>
           </tr>
           <tr>
-            <td><div class='input-group' id='datetimepicker'>
-              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
+              <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
+              <label class="input-group-addon btn" for="booking[start_date]">
+                <span class="fa fa-calendar open-datetimepicker"></span>
+              </label>
             </td>
-            <td><div class='input-group' id='datetimepicker'>
-              <input type='date' name='date' class="form-control" placeholder="Date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+            <td>
+              <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
+              <label class="input-group-addon btn" for="booking[end_date]">
+                <span class="fa fa-calendar open-datetimepicker"></span>
+              </label>
             </td>
-          </tr>
-          <tr>
-            <td>total price</td>
-            <td class ="text-right"><%=@gadget.price%>€</td>
           </tr>
         </table>
-        <%= link_to "request booking", new_gadget_booking_path(@gadget), class: "btn btn-primary btn-large btn-block" %>
+        <table class = "table">
+           <tr>
+            <td>total price</td>
+            <td class ="text-right" id="price"><%=@gadget.price%>€</td>
+          </tr>
+        </table>
+        <%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
+        <% end %>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <table border="1">
-  <tr>
-    <th>Month</th>
-    <th>Savings</th>
-  </tr>
-  <tr>
-    <td>January</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>February</td>
-    <td>$80</td>
-  </tr>
-</table> -->
 
-
-<!-- <div class="tabs">
-  <a class="tab active" href="#">
-    <h3>350</h3>
-    <p>Followers</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>456</h3>
-    <p>Following</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>189</h3>
-    <p>Upvoted</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>13</h3>
-    <p>Submitted</p>
-  </a>
-</div> -->
+<!-- Content for +script -->
+<!-- var start_date = $('#start_date').val() -->

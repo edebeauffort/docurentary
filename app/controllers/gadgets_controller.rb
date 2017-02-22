@@ -3,7 +3,15 @@ class GadgetsController < ApplicationController
   before_action :set_gadget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @filtered_gadgets = Gadget.search_results(params[:category], params[:location])
+    @filtered_gadgets = Gadget.search_results(params[:category], params[:location]).where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@filtered_gadgets) do |gadget, marker|
+    marker.lat gadget.latitude
+    marker.lng gadget.longitude
+    #raise
+    # marker.infowindow render_to_string(partial: "/gadgets/map_box", locals: { gadget: gadget }
+    end
+    #NOTE: WE DON'T HAVE GOOGLE API KEYS PUSHED TO HEROKU YET!!
   end
 
   # def search_results
@@ -11,7 +19,9 @@ class GadgetsController < ApplicationController
   # end
 
 
-  def show                                  # used for accessing the details of specific gadget.
+  def show
+    @booking = Booking.new
+                                     # used for accessing the details of specific gadget.
   end
 
   def new                                   # used for accessing the details of specific gadget.
