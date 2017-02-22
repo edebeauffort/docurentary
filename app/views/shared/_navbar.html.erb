@@ -24,11 +24,15 @@
         <% if current_user.facebook_picture_url %>
         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag avatar_url, class: "avatar-user dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-         <% else %>
-
-        <% avatar_photo = current_user.photo.path %>
+       <% elsif %>
+        <% if current_user.photo? %>
+       <% avatar_photo = current_user.photo.path %>
 
         <%= cl_image_tag avatar_photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
+        <% else %>
+ <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "avatar-user dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <%  end%>
 
 
