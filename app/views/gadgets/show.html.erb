@@ -44,7 +44,7 @@
         <div class = "item-booking">
           <table class = "table price">
            <tr>
-            <td><%=@gadget.price%> €</td>
+            <td id="gadgetprice"><%=@gadget.price%> €</td>
             <td class ="text-right"> per day</td>
           </tr>
         </table>
@@ -55,7 +55,10 @@
           </tr>
           <tr>
             <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
-              <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
+             <%= f.input :start_date, as: :string, input_html: {class: "form-control datetimepicker", id:"start_date"} %>
+             <%= f.input :end_date, as: :string, input_html: {class: "form-control datetimepicker", id:"end_date"} %>
+
+             <!--  <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
               <label class="input-group-addon btn" for="booking[start_date]">
                 <span class="fa fa-calendar open-datetimepicker"></span>
               </label>
@@ -64,7 +67,7 @@
               <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
               <label class="input-group-addon btn" for="booking[end_date]">
                 <span class="fa fa-calendar open-datetimepicker"></span>
-              </label>
+              </label> -->
             </td>
           </tr>
         </table>
@@ -84,5 +87,4 @@
 </div>
 
 
-<!-- Content for +script -->
-<!-- var start_date = $('#start_date').val() -->
+
