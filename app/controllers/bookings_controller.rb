@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
    before_action :set_booking, only: [:show]
    before_action :set_gadget, only: [:new]
 
+   def index
+    @bookings = Booking.where(user_id: current_user.id)
+   end
+
   def new
     @booking = Booking.new
   end
@@ -13,7 +17,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @gadget = Gadget.find(params[:gadget_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
