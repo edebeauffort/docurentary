@@ -5,7 +5,7 @@
 
 .background {
   display: flex;
-  height: 150vh;
+  height: 70vh;
   background-image: cover;
   background-size: cover;
   background-color: white;
@@ -116,10 +116,11 @@
 }
 
 // non-related styling:
-body{
-  background: #333333;
-  color: #ddd;
+.carousel {
+  background: #EEEEEE;
+  color: #333333;
 }
+
 h3{
   color: #CCCCCC;
   font-size: 1.5em;
