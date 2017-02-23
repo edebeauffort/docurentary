@@ -1,4 +1,8 @@
 class ReviewsController < ApplicationController
+  def index
+  @gadget = Gadget.find(params[:gadget_id])
+  @reviews = @gadget.reviews
+  end
    def new
     @gadget = Gadget.find(params[:gadget_id])
     @review = Review.new

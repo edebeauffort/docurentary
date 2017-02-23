@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   resources :gadgets do
     resources :bookings, only: [:new, :create, :edit, :show]
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :index]
   end
 
   get '/search_results', to: 'gadgets#search_results'

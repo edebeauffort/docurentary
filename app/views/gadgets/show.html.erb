@@ -10,276 +10,324 @@
 </div>
 <div class = "card-gadget">
   <div class ="container">
-    <div class="row">
-      <div class=" col-xs-12 col-md-6">
-        <h2><%=@gadget.brand%> | <%=@gadget.model%></h2>
-        <div class = "description">
-          <div class ="item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
-            <h3> Features </h3>
-            <table class = "table">
-              <tr>
-                <td>category</td>
-                <td class="text-right"><%=@gadget.category%></td>
-              </tr>
-              <tr>
-                <td>brand</td>
-                <td class="text-right"><%=@gadget.brand%></td>
-              </tr>
-              <tr>
-                <td>model</td>
-                <td class="text-right"><%=@gadget.model%></td>
-              </tr>
-              <tr>
-                <td>description</td>
-                <td class="text-right"><%=@gadget.description%></td>
-              </tr>
-            </table>
+    <div class=" col-xs-12 col-md-6">
+      <div class="row">
+
+        <div class="tabs">
+          <a class="tab active" data-target="#description">
+            <h3>Description</h3>
+          </a>
+          <a class="tab" data-target="#reviews">
+           <h3>Reviews</h3>
+         </a>
+       </div>
+       <div class="row">
+        <div class="col-xs-12">
+          <div class="tabs-container">
+           <h2><%=@gadget.brand%> | <%=@gadget.model%></h2>
+           <div class="description tab-content" id="description">
+            <div class="item">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
+              <h3> Features </h3>
+              <table class = "table">
+                <tr>
+                  <td>category</td>
+                  <td class="text-right"><%=@gadget.category%></td>
+                </tr>
+                <tr>
+                  <td>brand</td>
+                  <td class="text-right"><%=@gadget.brand%></td>
+                </tr>
+                <tr>
+                  <td>model</td>
+                  <td class="text-right"><%=@gadget.model%></td>
+                </tr>
+                <tr>
+                  <td>description</td>
+                  <td class="text-right"><%=@gadget.description%></td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="container tab-content hidden" id="reviews">
+          <div class="row">
+            <div class=" col-xs-12 col-md-6">
+              <h2>Reviews</h2>
+
+              <% def hey %>
+              <% durchschnitt = 0 %>
+              <% i = 0 %>
+              <% ratings = 0 %>
+              <% k = 0 %>
+              <% @gadget.reviews.each do |review| %>
+              <% k += 1 %>
 
 
-      <div class=" col-xs-12 col-md-6">
-        <div class = "item-booking">
-          <table class = "table price">
-           <tr>
-            <td><%=@gadget.price%> €</td>
-            <td class ="text-right"> per day</td>
-          </tr>
-        </table>
-        <table class = "table date">
-          <tr>
-            <td class="text-center">from </td>
-            <td class="text-center">to </td>
-          </tr>
-          <tr>
-            <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
-              <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
-              <label class="input-group-addon btn" for="booking[start_date]">
-                <span class="fa fa-calendar open-datetimepicker"></span>
-              </label>
-            </td>
-            <td>
-              <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
-              <label class="input-group-addon btn" for="booking[end_date]">
-                <span class="fa fa-calendar open-datetimepicker"></span>
-              </label>
-            </td>
-          </tr>
-        </table>
-        <table class = "table">
-           <tr>
-            <td>total price</td>
-            <td class ="text-right" id="price"><%=@gadget.price%>€</td>
-          </tr>
-        </table>
-        <%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
-        <% end %>
+              <% if k < 4 %>
+              <div class="review-box">
+                <ul>
+                  <h6> <%= review.context  %></h6>
+                  <%  review.rating.times do |f|  %>
+                  <span class="fa fa-star star-review"> </span>
+                  <% end %>
+                  <br>
+
+                  <%=   review.gadget.user.first_name %>
+
+
+
+
+                </ul>
+              </div>
+
+              <% i += 1 %>
+              <%  durchschnitt = (ratings += review.rating)/ i %>
+              <% end %>
+
+              <% end %>
+
+
+
+
+
+
+              <div class="container">
+                <div class="row">
+                  <div class=" col-xs-3 ">
+                    <h4> the average rating is </h4>
+                    <%  durchschnitt.times do |f|  %>
+                    <span class="fa fa-star star-review"> </span>
+                    <% end %>
+                  </div>
+
+
+                  <div class= "btn btn-primary review-button col-xs-3 "><%= link_to "See allreviews", gadget_reviews_path(@gadget)%>
+                  </div>
+
+
+                </div>
+
+
+                <% end %>
+                <%= hey %>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
+
+
+
+
     </div>
-<<<<<<< HEAD
-    <%= link_to "Request booking", class: "btn btn-primary" %>
-       <button class="btnr">
-         <%= link_to "add review", new_gadget_review_path(@gadget)%></button>
-=======
->>>>>>> c6fbe7b69722bb2b6bd36d560ca4e04ba790e9fb
   </div>
+
+  <%# link_to "Request booking", class: "btn btn-primary" %>
+
+
+</div>
+<div class=" col-xs-12 col-md-6">
+  <div class = "item-booking">
+    <table class = "table price">
+     <tr>
+      <td><%=@gadget.price%> €</td>
+      <td class ="text-right"> per day</td>
+    </tr>
+  </table>
+  <table class = "table date">
+    <tr>
+      <td class="text-center">from </td>
+      <td class="text-center">to </td>
+    </tr>
+    <tr>
+      <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
+        <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
+        <label class="input-group-addon btn" for="booking[start_date]">
+          <span class="fa fa-calendar open-datetimepicker"></span>
+        </label>
+      </td>
+      <td>
+        <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
+        <label class="input-group-addon btn" for="booking[end_date]">
+          <span class="fa fa-calendar open-datetimepicker"></span>
+        </label>
+      </td>
+    </tr>
+  </table>
+  <table class = "table">
+   <tr>
+    <td>total price</td>
+    <td class ="text-right" id="price"><%=@gadget.price%>€</td>
+  </tr>
+</table>
+<%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
+<% end %>
+
+</div>
+</div>
 </div>
 
 
-<<<<<<< HEAD
+
+
 
 <div class = "container">
   <div class = "col-xs-12 col col-lg-12">
-      <div id="map" style="width: 100%; height: 400px;"></div>
+    <div id="map" style="width: 100%; height: 400px;"></div>
 
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
-      <script type="text/javascript">
-        var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
+    <script type="text/javascript">
+      var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
 
-        var myOptions = {
-          zoom: 16,
-          center: myLatlng,
-          scrollwheel: false,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: [
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#004358"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#fd7400"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            },
-            {
-                "lightness": -20
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            },
-            {
-                "lightness": -17
-            }
-        ]
-    },
-    {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "visibility": "on"
-            },
-            {
-                "weight": 0.9
-            }
-        ]
-    },
-    {
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#ffffff"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            },
-            {
-                "lightness": -10
-            }
-        ]
-    },
-    {},
-    {
-        "featureType": "administrative",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#1f8a70"
-            },
-            {
-                "weight": 0.7
-            }
-        ]
-    }
+      var myOptions = {
+        zoom: 16,
+        center: myLatlng,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#004358"
+          }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#fd7400"
+          }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          },
+          {
+            "lightness": -20
+          }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          },
+          {
+            "lightness": -17
+          }
+          ]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [
+          {
+            "color": "#ffffff"
+          },
+          {
+            "visibility": "on"
+          },
+          {
+            "weight": 0.9
+          }
+          ]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels",
+          "stylers": [
+          {
+            "visibility": "simplified"
+          }
+          ]
+        },
+        {
+          "elementType": "labels.icon",
+          "stylers": [
+          {
+            "visibility": "off"
+          }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          },
+          {
+            "lightness": -10
+          }
+          ]
+        },
+        {},
+        {
+          "featureType": "administrative",
+          "elementType": "geometry",
+          "stylers": [
+          {
+            "color": "#1f8a70"
+          },
+          {
+            "weight": 0.7
+          }
+          ]
+        }
 ] // TODO: replace [] by array from https://snazzymaps.com/
-  };
+};
 
-  var map = new google.maps.Map(document.getElementById('map'), myOptions);
-  var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title: "You are here!"
-  });
+var map = new google.maps.Map(document.getElementById('map'), myOptions);
+var marker = new google.maps.Marker({
+  position: myLatlng,
+  map: map,
+  title: "You are here!"
+});
 </script>
-  </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-       <% def hey %>
-        <% durchschnitt = 0 %>
-        <% i = 0 %>
-        <% ratings = 0 %>
-        <% @gadget.reviews.each do |review| %>
-        <div class="review-box">
-        <ul>
-        <h6> <%= review.context  %></h6>
-        <h6><%=   review.rating  %> </h6>
-
-
-
-        </ul>
 </div>
 
-        <% i += 1 %>
-        <%  durchschnitt = (ratings += review.rating)/ i %>
-
-
-
-
-        <% end %>
-
-        <h4> the average rating is
-         <%= durchschnitt %>
-
-        <% end %>
-         <%= hey %>
-    </div>
-  </div>
-</div>
 
 
 =======
