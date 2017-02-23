@@ -72,9 +72,9 @@
   margin: 0px
 }
 
-.card-description h4 {
+.card-description h5 {
   font-size: 15px;
-  margin: 5px;
+  margin-top: px;
 }
 
 .multi-item-carousel{
@@ -82,7 +82,7 @@
     > .item{
       transition: 500ms ease-in-out left;
     }
-    background-color: black;
+    background-color: #F5F5F5;
     .active{
       &.left{
         left:-33%;
@@ -109,27 +109,40 @@
   }
   .carouse-control{
     &.left, &.right{
-      background-image: none;
+      background-image: none !important;
 
     }
   }
 }
 
+
+
 // non-related styling:
 .carousel {
-  background: #EEEEEE;
-  color: #333333;
+  background: #333333;
+  color: black;
+
+.glyphicon-chevron-left {
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.glyphicon-chevron-right {
+  margin-right: 0px;
+  margin-top: 10px;
+}
 }
 
 h3{
   color: #CCCCCC;
-  font-size: 1.5em;
+  font-size: 1.25em;
   text-align: left;
-  margin-top: 1em;
-  margin-bottom: .5em;
+  margin-left: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
-.map-index {
+#map {
   margin-bottom: 10px;
   margin-top: 25px;
 }

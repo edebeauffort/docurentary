@@ -1,0 +1,24 @@
+<div class="container index-review">
+  <div class="row">
+  <h1>Reviews</h1>
+    <% @reviews.each do |review| %>
+    <div class="review-box">
+      <ul>
+        <h6> <%= review.context  %></h6>
+        <%  review.rating.times do |f|  %>
+        <span class="fa fa-star star-review"> </span>
+        <% end %>
+        <br>
+
+        <%=   review.gadget.user.first_name %>
+
+
+
+
+      </ul>
+    </div>
+    <% end %>
+<%= link_to "add review", new_gadget_review_path(@gadget), {class: "btn btn-primary"}%>
+<%= link_to "go back to gadget", gadget_path(@gadget), {class: "btn btn-primary"}%>
+  </div>
+</div>
