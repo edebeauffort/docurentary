@@ -9,7 +9,7 @@ class GadgetsController < ApplicationController
     marker.lat gadget.latitude
     marker.lng gadget.longitude
     #raise
-    # marker.infowindow render_to_string(partial: "/gadgets/map_box", locals: { gadget: gadget }
+    marker.infowindow render_to_string(partial: "/gadgets/infowindow", locals: { info_gadget: gadget })
     end
     #NOTE: WE DON'T HAVE GOOGLE API KEYS PUSHED TO HEROKU YET!!
   end
@@ -22,6 +22,10 @@ class GadgetsController < ApplicationController
   def show
     @booking = Booking.new
                                      # used for accessing the details of specific gadget.
+    @hash = Gmaps4rails.build_markers(@gadget) do |gadget, marker|
+      marker.lat gadget.latitude
+      marker.lng gadget.longitude
+    end
   end
 
   def new                                   # used for accessing the details of specific gadget.
