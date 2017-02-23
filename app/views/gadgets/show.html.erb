@@ -78,8 +78,7 @@
 
           <% if @gadget.reviews.empty? %>
           <h2>This gadget has no reviews</h2>
-          <div class= "btn btn-primary add-review-buttons "><%= link_to "add review", new_gadget_review_path(@gadget)%>
-          </div>
+          <%= link_to "add review", new_gadget_review_path(@gadget), {class: "btn btn-primary"}%>
 
           <% else %>
           <div class=" col-xs-3 ">
