@@ -1,19 +1,23 @@
 class BookingsController < ApplicationController
 
-   before_action :set_booking, only: [:show]
    before_action :set_gadget, only: [:new]
 
    def index
-    @bookings = Booking.where(user_id: current_user.id)
    end
+
+    def my_requests
+      @requests = []
+      current_user.gadgets.each do |gadget|
+        @requests << gadget.bookings
+      end
+      @requests = @requests.flatten.sort
+      @sorted_requests = @requests.sort_by do |item|
+        item.created_at
+      end
+    end
 
   def new
     @booking = Booking.new
-  end
-
-  def show
-    @start = params[:start_date]
-    @end = params[:end_date]
   end
 
   def create
@@ -35,7 +39,8 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = Booking.find(params[:booking_id])
+    @gadget = Gadget.find(params[:gadget_id])
+    @booking = Booking.where(gadget_id: @gadget.id)
   end
 
   def set_gadget
