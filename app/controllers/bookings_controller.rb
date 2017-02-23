@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @gadget = Gadget.find(params[:gadget_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
