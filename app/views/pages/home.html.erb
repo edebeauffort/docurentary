@@ -10,7 +10,7 @@
               <select class="form-control" name="category" placeholder="Category">
                 <option value=" " disabled selected> Type of equipment:</option>
                 <option>Cameras</option>
-                <optgroup>Video Cameras</optgroup>
+                <option>Video Cameras</option>
                 <option>Drones</option>
                 <option>Projectors</option>
                 <option>Laptops</option>
@@ -30,14 +30,14 @@
 
 <div class = "wrapper carousel">
 <div class="gadget-index">
-  <div class="container">
+
 
     <div class="row">
       <div class="col-xs-12">
-        <h3>Currently Available...</h3>
+
 
         <div class="carousel slide multi-item-carousel" id="indexCarousel">
-
+        <h3>Currently Available:</h3>
           <div class="carousel-inner">
             <div class="item active">
               <%= render 'home_gadget_card', gadget: @gadgets[0] %>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
 </div>
 
