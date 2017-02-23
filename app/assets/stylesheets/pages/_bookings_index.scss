@@ -1,0 +1,74 @@
+.card-bkng {
+  height: 370px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: #333333;
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #333333;
+  box-shadow: 2px 2px 2px;
+  border-radius: 3px;
+}
+
+.card-image-bkng {
+  height: 150px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+}
+.card-user-bkng {
+  position: absolute;
+  top: 135px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.card-category-bkng {
+  position: absolute;
+  top: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.card-description-bkng {
+  position: absolute;
+  bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.card-description-bkng h2 {
+  font-size: 20px;
+}
+.card-description-bkng p {
+  font-size: 15px;
+  }
+.card-link-bkng {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.card-link-bkng:hover{
+  opacity: 0.1;
+}
+
+.avatar-large-bkng {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-size: 80px 60px;
+}
