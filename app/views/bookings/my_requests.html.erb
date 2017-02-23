@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <% if current_user.bookings.blank? %>
+    <% if @sorted_requests.blank? %>
       <div>
         <p>Make your first booking today! Add a link here</p>
       </div>
     <% else %>
       <div class="col-xs-12">
         <div class="row">
-          <% current_user.bookings.each do |booking| %>
+          <% @sorted_requests.each do |booking| %>
             <div class="col-xs-12 col-md-4 text-center">
               <%= link_to root_path do %>
                 <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
