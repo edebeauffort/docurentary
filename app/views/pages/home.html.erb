@@ -1,17 +1,21 @@
 <div class="wrapper">
   <div class="row">
     <div class="col-xs-12">
-      <div class="banner background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'background.jpg'%>);">
+      <div class="banner background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("<%= image_path 'background.jpg'%>");">
         <div class="container">
-          <h1>Docurentary</h1>
-          <p>Rent creative tech equipment and capture your story through your eyes</p>
+          <h1>DocuRentary</h1>
+          <p>Rent creative tech equipment to capture your story</p>
           <div class="row">
             <form action="/gadgets" class="form-inline">
               <select class="form-control" name="category" placeholder="Category">
                 <option value=" " disabled selected> Type of equipment:</option>
-                <option>camera</option>
-                <option>drone</option>
-                <option>projector</option>
+                <option>Cameras</option>
+                <optgroup>Video Cameras</optgroup>
+                <option>Drones</option>
+                <option>Projectors</option>
+                <option>Laptops</option>
+                <option>Mobile Phones</option>
+                <option>Tablets</option>
               </select>
               <input type="text" placeholder="City" class="form-control" name="location">
               <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
@@ -23,30 +27,34 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h2>Popular gadgets</h2>
-      <p>Prices are set per booking day</p>
-    </div>
-    <% @gadgets.each do |gadget| %>
-    <div class="col-xs-12 col-md-3">
-      <%= link_to gadget_path(gadget) do %>
 
-      <% gadget.photos.empty? ? img_url = "http://placehold.it/350x150" : img_url = gadget.photos.first.path %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path img_url , height: 1000, crop: :fill %>');">
-        <div class="card-category"><%= gadget.category %></div>
-        <div class="card-description">
-          <h2> <%= gadget.brand %></h2>
-          <h3><%= gadget.model %></h3>
+
+<div class="gadget-index">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Currently Available...</h3>
+
+        <div class="carousel slide multi-item-carousel" id="indexCarousel">
+
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= render 'home_gadget_card', gadget: @gadgets[0] %>
+            </div>
+
+            <% @gadgets[1..-1].each do |gadget| %>
+              <div class="item">
+                <%= render 'home_gadget_card', gadget: gadget %>
+              </div>
+            <% end %>
+          </div>
+          <a class="left carousel-control" href="#indexCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+          <a class="right carousel-control" href="#indexCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
         </div>
-        <h4 class="card-price"><%= "$#{gadget.price}" %></h4>
       </div>
-      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
-
-
 
