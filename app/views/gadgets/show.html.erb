@@ -102,7 +102,7 @@
                   </div>
 
 
-                  <div class= "btn btn-primary review-button col-xs-3 "><%= link_to "See allreviews", gadget_reviews_path(@gadget)%>
+                  <div class= "btn btn-primary review-button col-xs-3 btn-primary"><%= link_to "See allreviews", gadget_reviews_path(@gadget)%>
                   </div>
 
 
@@ -132,7 +132,7 @@
   <div class = "item-booking">
     <table class = "table price">
      <tr>
-      <td><%=@gadget.price%> €</td>
+      <td id="gadgetprice"><%=@gadget.price%> €</td>
       <td class ="text-right"> per day</td>
     </tr>
   </table>
@@ -143,24 +143,17 @@
     </tr>
     <tr>
       <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
-        <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
-        <label class="input-group-addon btn" for="booking[start_date]">
-          <span class="fa fa-calendar open-datetimepicker"></span>
-        </label>
-      </td>
-      <td>
-        <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
-        <label class="input-group-addon btn" for="booking[end_date]">
-          <span class="fa fa-calendar open-datetimepicker"></span>
-        </label>
-      </td>
-    </tr>
-  </table>
-  <table class = "table">
-   <tr>
-    <td>total price</td>
-    <td class ="text-right" id="price"><%=@gadget.price%>€</td>
+       <%= f.input :start_date, as: :string, input_html: {class: "form-control datetimepicker", id:"start_date"} %>
+       <%= f.input :end_date, as: :string, input_html: {class: "form-control datetimepicker", id:"end_date"} %>
+
+    </td>
   </tr>
+</table>
+<table class = "table">
+ <tr>
+  <td>total price</td>
+  <td class ="text-right" id="price"><%=@gadget.price%>€</td>
+</tr>
 </table>
 <%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
 <% end %>
