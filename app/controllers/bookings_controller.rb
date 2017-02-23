@@ -8,19 +8,27 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @start = params[:start_date]
+    @end = params[:end_date]
   end
 
   def create
-  @booking = Booking.new(booking_params)
-  @booking.gadget = @gadget
-  @booking.save
-  redirect_to new_gadget_booking_path
+    binding.pry
+    @gadget = Gadget.find(params[:gadget_id])
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.gadget = @gadget
+    if @booking.save
+      redirect_to gadget_path(@gadget)
+    else
+      render gadget_path(@gadget)
+    end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :gadget_id)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 
   def set_booking
