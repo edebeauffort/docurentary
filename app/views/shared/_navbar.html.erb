@@ -43,8 +43,8 @@
             <% end %>
           </li>
           <li>
-            <%= link_to root_path do %>
-            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+            <%= link_to my_requests_path do %>
+            <%= image_tag "drone-icon.png", class: "drone"%> <%= t(".my_requests", default: "my gadgets") %>
             <% end %>
           </li>
           <li>
