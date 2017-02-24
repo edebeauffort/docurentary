@@ -6,12 +6,12 @@
 
 $(document).ready(function () {
   $('.datetimepicker').datepicker({
-    format: "mm/dd/yyyy"
+    format: "dd/mm/yyyy"
   });
 
   $('#end_date').on('change', function() {
-    var start =   new Date($("#start_date").val())
-    var end = new Date($("#end_date").val())
+    var start = $('#start_date').datepicker('get')
+    var end = $('#end_date').datepicker('get')
     var time = 24*60*60*1000
     var diffDays = Math.round(Math.abs((end - start)/(time)))
     var dailyprice = $("#gadgetprice").text().replace("€","")
