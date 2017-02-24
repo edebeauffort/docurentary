@@ -7,12 +7,12 @@
 
                 <div class="form-group">
                   <%= simple_form_for(@gadget) do |f| %>
-                      <%= f.input :category, required: false, collection: [ "Cameras", "Computers", "Drones", "Lenses", "VR Gear"], input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"} %>
-                      <%= f.input :brand, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "E.g. Canon, Sony, Microsoft, Samsung.." %>
-                      <%= f.input :model, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "E.g. Surface Pro 4, A7s II.." %>
-                    <%= f.input :price, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Price per day." %>
+                      <%= f.input :category, required: false, collection: [ "Cameras - Video", "Cameras - Photography", "Computers - Desktop", "Computers - Laptop", "Drones", "Mobile Phones", "Projectors", "Tablets"], input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"} %>
+                      <%= f.input :brand, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "e.g., Canon, Sony, Microsoft, Samsung.." %>
+                      <%= f.input :model, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "e.g., Surface Pro 4, A7s II.." %>
+                    <%= f.input :price, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Price per day:" %>
                     <%= f.input :location, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Enter an address..." %>
-                    <%= f.input :description, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Enter a descrription..." %>
+                    <%= f.input :description, required: false, input_html:{class:"my_input"}, label_html:{class:"my_label"}, wrapper_html:{class:"my_wrapper"}, placeholder: "Enter a description..." %>
                     <%= f.input :photos, as: :attachinary %>
                     <%= f.button :submit, class: 'btn btn-primary bold-text btn-new-gadget' %>
                   <% end %>

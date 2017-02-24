@@ -8,17 +8,36 @@
           <div class="row">
             <form action="/gadgets" class="form-inline">
               <select class="form-control" name="category" placeholder="Category">
-                <option value=" " disabled selected> Type of equipment:</option>
-                <option>Cameras</option>
-                <option>Video Cameras</option>
+                <option value=" " disabled selected> Type of Gadget:</option>
+                <option>Cameras - Video</option>
+                <option>Cameras - Photography</option>
+                <option>Computers - Desktop</option>
+                <option>Computers - Laptop</option>
                 <option>Drones</option>
-                <option>Projectors</option>
-                <option>Laptops</option>
                 <option>Mobile Phones</option>
+                <option>Projectors</option>
                 <option>Tablets</option>
               </select>
+
               <input type="text" placeholder="City" class="form-control" name="location">
+              <input value="<%= params[:start_date] %>" type="date" placeholder="date" class="form-control" name="date">
+              <input value="<%= params[:end_date] %>" type="date" placeholder="date" class="form-control" name="date">
               <input type="submit" value="Search" class="navbar-wagon-item navbar-wagon-button btn">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
             </form>
           </div>
         </div>

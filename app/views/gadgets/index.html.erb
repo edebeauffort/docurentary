@@ -1,22 +1,6 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 text-center">
-        <label>When Do You Need It?</label>
-        <form action="/search_results" method="/get">
-          <div class="form-search form-inline">
-            <input value="<%= params[:start_date] %>" type="date" placeholder="date" class="form-control" name="date">
-            <input value="<%= params[:end_date] %>" type="date" placeholder="date" class="form-control" name="date">
-            <input type="submit" value="Check Avalability" class="navbar-wagon-item navbar-wagon-button btn">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
     <% if @filtered_gadgets.blank? %>
       <div>
         <p>We got nothing for you, sorry!</p>
