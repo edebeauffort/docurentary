@@ -20,6 +20,17 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    if params[:commit] == "Accept"
+      @booking.flag = "accepted"
+    else
+      @booking.flag = "declined"
+    end
+    @booking.save
+    redirect_to my_requests_path
+  end
+
   def create
     @gadget = Gadget.find(params[:gadget_id])
     @booking = Booking.new(booking_params)
@@ -28,7 +39,7 @@ class BookingsController < ApplicationController
     if @booking.save
      redirect_to bookings_path
    else
-    render gadget_path(@gadget)
+      render "gadgets/show"
     end
   end
 
