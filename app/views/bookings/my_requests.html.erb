@@ -9,22 +9,23 @@
         <div class="row">
           <% @sorted_requests.each do |booking| %>
             <div class="col-xs-12 col-md-4 text-center">
-              <%= link_to root_path do %>
+              <% gadget = booking.gadget %>
+              <%= link_to gadget_path(gadget) do %>
                 <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
                   <div class="card-image-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.gadget.photos.first.path %>');">
                   </div>
                   <div class="card-user-bkng avatar-large-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.user.photo.path %>');">
                   </div>
+              <% end %>
                   <div class="card-category-bkng">
                     <h2><%= booking.gadget.brand %></h2>
                     <h5><%= booking.gadget.model %></h5>
                   </div>
-                  <div class="card-description-bkng">
+                  <div class="card-description-request">
                     <p><%= "Booking starts at: #{booking.start_date}" %></p>
                     <p><%= "Booking ends at: #{booking.end_date}" %></p>
                   </div>
                 </div>
-              <% end %>
             </div>
           <% end %>
         </div>
