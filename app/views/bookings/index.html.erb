@@ -1,17 +1,42 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h2><em>Your latest Bookings</em> </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <% if current_user.bookings.blank? %>
       <div>
-        <p>Make your first booking today! Add a link here</p>
+        <%= link_to gadgets_path do %>
+        <p class="text-center">Make your first booking today!</p>
+        <% end %>
       </div>
     <% else %>
       <div class="col-xs-12">
         <div class="row">
           <% current_user.bookings.each do |booking| %>
             <div class="col-xs-12 col-md-4 text-center">
+                <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
+                <% if booking.flag == "pending" %>
+                  <div id="flag-yellow">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% elsif booking.flag == "accepted" %>
+                  <div id="flag-green">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% else booking.flag == "declined" %>
+                  <div id="flag-red">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% end %>
             <% gadget = booking.gadget %>
               <%= link_to gadget_path(gadget)do %>
-                <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
                   <div class="card-image-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.gadget.photos.first.path %>');">
                   </div>
                   <div class="card-user-bkng avatar-large-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.user.photo.path %>');">

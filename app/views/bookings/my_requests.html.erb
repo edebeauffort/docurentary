@@ -1,17 +1,42 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h2><em>Check who rented your gadgets</em> </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <% if @sorted_requests.blank? %>
       <div>
-        <p>Make your first booking today! Add a link here</p>
+        <%= link_to new_gadget_path do %>
+        <p class="text-center">Become a renter today. Add your first gadget here!</p>
+        <% end %>
       </div>
     <% else %>
       <div class="col-xs-12">
         <div class="row">
           <% @sorted_requests.each do |booking| %>
             <div class="col-xs-12 col-md-4 text-center">
+                <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
+                <% if booking.flag == "pending" %>
+                  <div id="flag-yellow">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% elsif booking.flag == "accepted" %>
+                  <div id="flag-green">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% else booking.flag == "declined" %>
+                  <div id="flag-red">
+                    <p><%= "#{booking.flag}".capitalize %></p>
+                  </div>
+                  <% end %>
               <% gadget = booking.gadget %>
               <%= link_to gadget_path(gadget) do %>
-                <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
                   <div class="card-image-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.gadget.photos.first.path %>');">
                   </div>
                   <div class="card-user-bkng avatar-large-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.user.photo.path %>');">
@@ -22,8 +47,14 @@
                     <h5><%= booking.gadget.model %></h5>
                   </div>
                   <div class="card-description-request">
-                    <p><%= "Booking starts at: #{booking.start_date}" %></p>
-                    <p><%= "Booking ends at: #{booking.end_date}" %></p>
+                    <p><%= "From: #{booking.start_date}" %></p>
+                    <p><%= "To: #{booking.end_date}" %></p>
+                    <% if booking.flag == "pending" %>
+                    <%= simple_form_for(booking) do |f|%>
+                    <%= f.submit "Accept", class: "btn btn-primary" %>
+                    <%= f.submit "Decline", class: "btn btn-danger" %>
+                    <% end %>
+                    <% end %>
                   </div>
                 </div>
             </div>
