@@ -8,7 +8,7 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
-  background-color: #333333;
+  background-color: #EDEFF0;
 }
 
 /* Optional class to fix the navbar on top */
@@ -41,7 +41,7 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #CCCCCC;
+  color: #333333;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
@@ -109,7 +109,7 @@
   outline: none;
 }
 .navbar-wagon-search-input:focus  {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #333333;
 }
 
 
@@ -158,4 +158,3 @@
   width: auto;
   opacity: 0.8;
 }
-
