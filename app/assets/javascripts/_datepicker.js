@@ -10,8 +10,8 @@ $(document).ready(function () {
   });
 
   $('#end_date').on('change', function() {
-    var start = $('#start_date').datepicker('get')
-    var end = $('#end_date').datepicker('get')
+    var start = $('#start_date').datepicker('getDate')
+    var end = $('#end_date').datepicker('getDate')
     var time = 24*60*60*1000
     var diffDays = Math.round(Math.abs((end - start)/(time)))
     var dailyprice = $("#gadgetprice").text().replace("€","")
