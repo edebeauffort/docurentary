@@ -25,9 +25,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.gadget = @gadget
-    @booking.save
-      redirect_to gadget_path(@gadget)
-
+    if @booking.save
+     redirect_to bookings_path
+   else
+    render gadget_path(@gadget)
+    end
   end
 
   private
