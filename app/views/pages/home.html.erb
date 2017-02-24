@@ -13,6 +13,8 @@
                 <option>Cameras - Photography</option>
                 <option>Computers - Desktop</option>
                 <option>Computers - Laptop</option>
+                <option>Cameras</option>
+                <option>VideoCameras</option>
                 <option>Drones</option>
                 <option>Mobile Phones</option>
                 <option>Projectors</option>
@@ -48,33 +50,26 @@
 
 
 <div class = "wrapper carousel">
-<div class="gadget-index">
-
-
+  <div class="gadget-index">
     <div class="row">
       <div class="col-xs-12">
-
-
         <div class="carousel slide multi-item-carousel" id="indexCarousel">
-        <h3>Currently Available:</h3>
+          <h3>Currently Available:</h3>
           <div class="carousel-inner">
             <div class="item active">
               <%= render 'home_gadget_card', gadget: @gadgets[0] %>
             </div>
-
             <% @gadgets[1..-1].each do |gadget| %>
-              <div class="item">
-                <%= render 'home_gadget_card', gadget: gadget %>
-              </div>
+            <div class="item">
+              <%= render 'home_gadget_card', gadget: gadget %>
+            </div>
             <% end %>
           </div>
           <a class="left carousel-control" href="#indexCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
           <a class="right carousel-control" href="#indexCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-
         </div>
       </div>
     </div>
-
-</div>
+  </div>
 </div>
 

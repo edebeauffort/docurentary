@@ -16,7 +16,7 @@
     <% if user_signed_in? %>
 
     <!-- Notification -->
-    <%= link_to t(".renter", default: "Your bookings"), gadgets_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".renter", default: "Your bookings"), bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
@@ -43,8 +43,8 @@
             <% end %>
           </li>
           <li>
-            <%= link_to root_path do %>
-            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+            <%= link_to my_requests_path do %>
+            <%= image_tag "drone-icon.png", class: "drone"%> <%= t(".my_requests", default: "my gadgets") %>
             <% end %>
           </li>
           <li>

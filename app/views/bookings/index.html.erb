@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <% if current_user.bookings.blank? %>
+      <div>
+        <p>Make your first booking today! Add a link here</p>
+      </div>
+    <% else %>
+      <div class="col-xs-12">
+        <div class="row">
+          <% current_user.bookings.each do |booking| %>
+            <div class="col-xs-12 col-md-4 text-center">
+            <% gadget = booking.gadget %>
+              <%= link_to gadget_path(gadget)do %>
+                <div class="card-bkng" style="background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0));">
+                  <div class="card-image-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.gadget.photos.first.path %>');">
+                  </div>
+                  <div class="card-user-bkng avatar-large-bkng" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path booking.user.photo.path %>');">
+                  </div>
+                    <% end %>
+                  <div class="card-category-bkng">
+                    <h2><%= booking.gadget.brand %></h2>
+                    <h5><%= booking.gadget.model %></h5>
+                  </div>
+                  <div class="card-description-bkng">
+                    <p><%= "Booking starts at: #{booking.start_date}" %></p>
+                    <p><%= "Booking ends at: #{booking.end_date}" %></p>
+                    <%= link_to new_gadget_review_path(gadget) do%>
+                    <p class="btn btn-primary">Add a Review</p>
+                    <% end %>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!--TO DO: 1) Change root_path to gadgets/booking/show-->

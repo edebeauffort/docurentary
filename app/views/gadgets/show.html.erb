@@ -8,106 +8,52 @@
     </div>
   </div>
 </div>
+
 <div class = "card-gadget">
-  <div class ="container">
-    <div class="row">
-      <div class=" col-xs-12 col-md-6">
-        <h2><%=@gadget.brand%> | <%=@gadget.model%></h2>
-        <div class = "description">
-          <div class ="item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae commodi quod, placeat. Nam tempora dolore, vitae ipsa eum laboriosam aliquid debitis ut commodi nobis mollitia, modi quidem voluptatum nihil esse?</p>
-            <h3> Features </h3>
-            <table class = "table">
-              <tr>
-                <td>category</td>
-                <td class="text-right"><%=@gadget.category%></td>
-              </tr>
-              <tr>
-                <td>brand</td>
-                <td class="text-right"><%=@gadget.brand%></td>
-              </tr>
-              <tr>
-                <td>model</td>
-                <td class="text-right"><%=@gadget.model%></td>
-              </tr>
-              <tr>
-                <td>description</td>
-                <td class="text-right"><%=@gadget.description%></td>
-              </tr>
-            </table>
-          </div>
-        </div>
+  <div class="container">
+    <div class ="row">
+      <div class="col-xs-12 col-md-6">
+        <%= render 'showtabs' %>
+        <%= render 'description' %>
+        <%= render 'review' %>
       </div>
-
-
-      <div class=" col-xs-12 col-md-6">
-        <div class = "item-booking">
-          <table class = "table price">
-           <tr>
-            <td id="gadgetprice"><%=@gadget.price%> €</td>
-            <td class ="text-right"> per day</td>
-          </tr>
-        </table>
-        <table class = "table date">
-          <tr>
-            <td class="text-center">from </td>
-            <td class="text-center">to </td>
-          </tr>
-          <tr>
-            <td>  <%= simple_form_for [@gadget, @booking] do |f| %>
-             <%= f.input :start_date, as: :string, input_html: {class: "form-control datetimepicker", id:"start_date"} %>
-             <%= f.input :end_date, as: :string, input_html: {class: "form-control datetimepicker", id:"end_date"} %>
-
-             <!--  <input type='text' name='booking[start_date]' class="form-control datetimepicker" id="start_date" placeholder="start">
-              <label class="input-group-addon btn" for="booking[start_date]">
-                <span class="fa fa-calendar open-datetimepicker"></span>
-              </label>
-            </td>
-            <td>
-              <input type='text' name='booking[end_date]' class="form-control datetimepicker" id="end_date" placeholder="end">
-              <label class="input-group-addon btn" for="booking[end_date]">
-                <span class="fa fa-calendar open-datetimepicker"></span>
-              </label> -->
-            </td>
-          </tr>
-        </table>
-        <table class = "table">
-           <tr>
-            <td>total price</td>
-            <td class ="text-right" id="price"><%=@gadget.price%>€</td>
-          </tr>
-        </table>
-        <%= f.submit "book now!", class: "btn btn-primary btn-large btn-block" %>
-        <% end %>
-
-        </div>
+      <div class="col-xs-12 col-md-6">
+        <%= render 'booking' %>
       </div>
+      </div>
+  </div>
+</div>
+
+<div class = "container">
+  <div class = "col-xs-12 col col-lg-12">
+    <div id="map" style="width: 100%; height: 400px;">
     </div>
   </div>
 </div>
 
-<div class ="container">
-  <div class="row">
-    <div class=" col-xs-12">
-      <div id="map" style="width: 100%; height: 300px;"></div>
-    </div>
-  </div>
-</div>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+
+
+
+
+
+
+
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
     $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+    handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+    handler.getMap().setZoom(14);
+    }
     });
-  <% end %>
-<% end %>
+    });
+    <% end %>
+    <% end %>
+
