@@ -3,8 +3,10 @@
   border-top: 0px;
 }
 
-.item-booking {
-
+.card-gadget {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .item-booking p {

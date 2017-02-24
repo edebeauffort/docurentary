@@ -1,0 +1,43 @@
+        <div class="tab-content hidden" id="reviews">
+          <h2>Reviews</h2>
+          <% def hey %>
+          <% durchschnitt = 0 %>
+          <% i = 0 %>
+          <% ratings = 0 %>
+          <% k = 0 %>
+          <% @gadget.reviews.each do |review| %>
+          <% k += 1 %>
+          <% if k < 4 %>
+          <div class="review-box">
+            <ul>
+              <h6> <%= review.context  %></h6>
+              <%  review.rating.times do |f|  %>
+              <span class="fa fa-star star-review"> </span>
+              <% end %>
+              <br>
+              <%=   review.gadget.user.first_name %>
+            </ul>
+          </div>
+          <% i += 1 %>
+          <%  durchschnitt = (ratings += review.rating)/ i %>
+          <% end %>
+          <% end %>
+          <div class="container">
+            <% if @gadget.reviews.empty? %>
+            <h2>This gadget has no reviews</h2>
+            <%= link_to "add review", new_gadget_review_path(@gadget), {class: "btn btn-primary"}%>
+
+            <% else %>
+            <div class=" col-xs-3 ">
+              <h4> the average rating is </h4>
+              <%  durchschnitt.times do |f|  %>
+              <span class="fa fa-star star-review"> </span>
+              <% end %>
+            </div>
+            <%= link_to "add review", new_gadget_review_path(@gadget), {class: "btn btn-primary"}%>
+            <%= link_to "See all reviews", gadget_reviews_path(@gadget), {class: "btn btn-primary"}%>
+            <% end %>
+            <% end %>
+            <%= hey %>
+          </div>
+        </div>

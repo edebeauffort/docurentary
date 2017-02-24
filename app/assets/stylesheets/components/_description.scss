@@ -1,3 +1,8 @@
+.container {
+  flex-direction: row;
+}
+
+
 .description {
   display: flex;
   align-items: center;
@@ -36,8 +41,7 @@
 }
 
 .price {
-  background-color: #2D565E;
-  color: white;
+  color: #333333;
 }
 
 .item-booking {
