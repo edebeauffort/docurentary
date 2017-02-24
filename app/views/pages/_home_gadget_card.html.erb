@@ -7,7 +7,12 @@
     <% gadget.photos.empty? ? img_url = "http://placehold.it/350x150" : img_url = gadget.photos.first.path %>
    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path img_url, height: 1000, crop: :fill %>');" class="img-responsive">
 
-      <img class="card-user avatar" src="user.jpg">
+        <% if gadget.user.photo? %>
+      <% avatar_photo = gadget.user.photo.path %>
+
+      <%= cl_image_tag avatar_photo, class: "card-user avatar "%>
+      <% end %>
+
       <div class="card-description">
         <h5>
           <%= gadget.category %>
